@@ -13,6 +13,7 @@
 - **换弱模型才翻**：qwen-turbo **6/8**（该关单却判 incomplete）。
 - 失败方向**单向**：只会"多转人"，**没有任何模型出现漏关单**。
 - 推论：**换模型的影响 > 改 prompt** —— 这解释了上游为什么把模型做成可配（`Llm::FeatureRouter`）+ 白名单收口。
+- **记忆 episode 边界标记对判定零影响**：转人工评估器的转录构建器把 activity 消息过滤掉了，`<conversation_boundary>` 标志**到不了它**；把 marker 硬塞进去 vs 不塞，逐条判定完全一致（两模型皆 1/6）。
 
 ## 拆的是什么
 
@@ -45,6 +46,25 @@ AI Agent **Captain**。对静默的 pending 会话，Captain 会回头评估："
 | qwen-turbo | **6/8** | S6（答全未致谢）、S7（仅问候）误判为 incomplete |
 
 ⇒ 弱模型的失败方向是**过度转人**（该关单却要转），**没有任何模型漏关单**。
+
+### 结果三：记忆 episode 边界对判定**零影响**（qwen-plus / qwen-max）
+
+Captain 用 `<conversation_boundary status="resolved" />` 给会话分段，该标记由"已解决"的 activity 消息生成：
+
+- **主 agent 看得到边界**：其历史构建器包含 activity 消息（`message_history_builder_service.rb:20`）。
+- **转人工评估器看不到**：其转录构建器只取 `incoming/outgoing`（`conversation_completion_service.rb:53`），把 activity 过滤掉了 —— 边界标记**永远到不了评估器**。
+
+用 6 条样例（5 条"旧 episode 看似未解决 + 新问题已答完"，1 条无陈旧内容的对照）做 A/B：
+**A** = 把 marker 硬塞进转录（反事实）；**B** = 不含 marker（等同生产）。
+
+| 模型 | A（含 marker） | B（不含 marker） | 逐条判定 |
+|---|---|---|---|
+| qwen-plus | 1/6 | 1/6 | **完全相同** |
+| qwen-max | 1/6 | 1/6 | **完全相同** |
+
+- 注入 marker **零影响**；两模型上 A、B 逐条一致。
+- BM6（无陈旧内容）判 complete → 评估器并非"永远判 incomplete"，而是**对陈旧内容敏感、对 episode 边界不敏感**。
+- 解读（`expect=complete` 指"当前 pending 交流已解决"，边界感知的评估器本应判 complete）：评估器无法区分"已关闭但看起来未解决的旧 episode"与"真正还开着的旧问题"，于是**保守地保持开启**。后果：一个"已解决、但结尾看起来没解决"的会话被重开后，永远不会自动关单，只会转人工。这与"宁可多转人"的设计一致，同时暴露了**记忆分段机制在评估器侧是盲区**。
 
 ## 方法（保真边界）
 
@@ -84,6 +104,11 @@ PROBE_TAG=v1_plus PROBE_PROMPT=./variants/v1_no_handoff.liquid      python probe
 PROBE_TAG=v2_plus PROBE_PROMPT=./variants/v2_bias_flipped.liquid    python probe.py
 PROBE_TAG=v3_plus PROBE_PROMPT=./variants/v3_lenient.liquid         python probe.py
 PROBE_TAG=v4_plus PROBE_PROMPT=./variants/v4_weak_complete.liquid   python probe.py
+
+# 5) episode 边界实验（记忆分段）：A 含 marker / B 不含
+python make_boundary_nomarker.py
+PROBE_SAMPLES=samples_boundary.json          PROBE_TAG=boundary_marker   python probe.py
+PROBE_SAMPLES=samples_boundary_nomarker.json PROBE_TAG=boundary_nomarker python probe.py
 ```
 
 每次运行会落一份原始输出到 `results/<tag>.json`。
@@ -91,11 +116,13 @@ PROBE_TAG=v4_plus PROBE_PROMPT=./variants/v4_weak_complete.liquid   python probe
 ## 仓库结构
 
 ```text
-probe.py            # 零依赖探针（标准库 urllib）
-samples.json        # 8 条标注样例
-make_variants.py    # 从本地 clone 运行时生成 v1-v4 消融 prompt（变体本身不入库）
-results/            # 原始运行输出（v0 × 3 模型 + v1-v4）
-docs/               # 详细结论与局限
+probe.py                       # 零依赖探针（标准库 urllib）
+samples.json                   # 实验一：8 条标注样例（判定/消融）
+make_variants.py               # 从本地 clone 运行时生成 v1-v4 消融 prompt（变体本身不入库）
+samples_boundary.json          # 实验二：6 条 episode 边界样例（含 marker）
+make_boundary_nomarker.py      # 生成实验二的 no-marker 对照组
+results/                       # 原始运行输出（v0 × 3 模型 + v1-v4 + boundary × 2 模型）
+docs/                          # 详细结论与局限
 ```
 
 ## 诚实边界与局限

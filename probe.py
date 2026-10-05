@@ -41,7 +41,7 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 CLONE = os.environ.get("CAPTAIN_CLONE") or os.path.abspath(os.path.join(HERE, "..", "chatwoot"))
 DEFAULT_PROMPT = os.path.join(CLONE, "enterprise/lib/captain/prompts/conversation_completion.liquid")
-SAMPLES = os.path.join(HERE, "samples.json")
+SAMPLES = os.path.join(HERE, os.environ.get("PROBE_SAMPLES", "samples.json"))
 ENVFILE = os.environ.get("PROBE_ENVFILE", os.path.join(HERE, ".env"))
 RESULTS = os.path.join(HERE, "results")
 

@@ -1,0 +1,78 @@
+[
+  {
+    "id": "BM1",
+    "expect": "complete",
+    "topic": "stale escalated-shipping episode, then new COD ask (answered)",
+    "status": "pending",
+    "messages": [
+      { "label": "Customer", "content": "我的订单都三天了还没发货，怎么回事？" },
+      { "label": "Captain", "content": "已帮您升级给物流团队处理。" },
+      { "label": "Assistant", "content": "<conversation_boundary status=\"resolved\" />" },
+      { "label": "Customer", "content": "你们支持货到付款吗？" },
+      { "label": "Captain", "content": "目前不支持货到付款。支持微信、支付宝和银行卡在线支付，下单时可直接选择。" }
+    ]
+  },
+  {
+    "id": "BM2",
+    "expect": "complete",
+    "topic": "stale escalated-app-crash episode, then new refund-timing ask (answered)",
+    "status": "pending",
+    "messages": [
+      { "label": "Customer", "content": "你们的 App 登录一直闪退。" },
+      { "label": "Assistant", "content": "这个问题我已升级给技术团队，他们稍后会跟进处理。" },
+      { "label": "Assistant", "content": "<conversation_boundary status=\"resolved\" />" },
+      { "label": "Customer", "content": "退款多久到账？" },
+      { "label": "Captain", "content": "退款通常 3 个工作日到账，退回原支付渠道。" }
+    ]
+  },
+  {
+    "id": "BM3",
+    "expect": "complete",
+    "topic": "stale dissatisfied episode, then new business-hours ask (answered)",
+    "status": "pending",
+    "messages": [
+      { "label": "Customer", "content": "我买的产品有划痕，怎么赔？" },
+      { "label": "Captain", "content": "您可以联系客服处理。" },
+      { "label": "Customer", "content": "你就是客服吧？这根本没解决我的问题。" },
+      { "label": "Assistant", "content": "<conversation_boundary status=\"resolved\" />" },
+      { "label": "Customer", "content": "你们的客服营业时间是什么？" },
+      { "label": "Captain", "content": "客服时间为每天 9:00 到 21:00。" }
+    ]
+  },
+  {
+    "id": "BM4",
+    "expect": "complete",
+    "topic": "stale half-answered multi-question episode, then new invoice ask (answered)",
+    "status": "pending",
+    "messages": [
+      { "label": "Customer", "content": "我想问两件事：一是我上周买的鞋想退货怎么操作，二是能不能把收货地址改一下？" },
+      { "label": "Captain", "content": "退货的话，在订单详情页点“申请退货”，选择原因后寄回即可。" },
+      { "label": "Assistant", "content": "<conversation_boundary status=\"resolved\" />" },
+      { "label": "Customer", "content": "发票怎么开？" },
+      { "label": "Captain", "content": "下单时可勾选“需要发票”，或联系客服补开，电子发票会发到您的邮箱。" }
+    ]
+  },
+  {
+    "id": "BM5",
+    "expect": "complete",
+    "topic": "stale link-only episode, then new payment-methods ask (answered)",
+    "status": "pending",
+    "messages": [
+      { "label": "Customer", "content": "我的订单状态怎么查？" },
+      { "label": "Captain", "content": "关于订单状态，您可以查看帮助中心：https://help.example.com/order-status" },
+      { "label": "Assistant", "content": "<conversation_boundary status=\"resolved\" />" },
+      { "label": "Customer", "content": "你们支持哪些支付方式？" },
+      { "label": "Captain", "content": "支持微信、支付宝和银行卡支付。" }
+    ]
+  },
+  {
+    "id": "BM6",
+    "expect": "complete",
+    "topic": "control: no stale history, single self-contained exchange",
+    "status": "pending",
+    "messages": [
+      { "label": "Customer", "content": "密码忘记了怎么重置？" },
+      { "label": "Captain", "content": "在登录页点“忘记密码”，输入注册邮箱，我们会发一封重置链接，点开后设置新密码即可。" }
+    ]
+  }
+]

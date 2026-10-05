@@ -1,0 +1,56 @@
+{
+  "model": "qwen-max",
+  "temperature": 0.0,
+  "prompt": "..\\chatwoot\\enterprise\\lib\\captain\\prompts\\conversation_completion.liquid",
+  "agreement": "1/6",
+  "rows": [
+    {
+      "id": "BM1",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale escalated-shipping episode, then new COD ask (answered)",
+      "reason": "客户提出了两个问题，但物流团队的处理结果还未反馈给客户。"
+    },
+    {
+      "id": "BM2",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale escalated-app-crash episode, then new refund-timing ask (answered)",
+      "reason": "The customer asked about the refund timing, and although Captain provided a general timeframe, the conversation status is still pending. The latest message from the Assistant mentioned escalating the login issue to the technical team, indicating that there is an unresolved issue waiting for follow-up."
+    },
+    {
+      "id": "BM3",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale dissatisfied episode, then new business-hours ask (answered)",
+      "reason": "客户提到产品有划痕的赔偿问题没有得到解决，并且询问了客服营业时间，但赔偿问题仍未被处理。"
+    },
+    {
+      "id": "BM4",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale half-answered multi-question episode, then new invoice ask (answered)",
+      "reason": "客户提出了两个问题：退货操作和更改收货地址。但Captain只回答了关于退货的操作以及发票的问题，未提及如何更改收货地址。"
+    },
+    {
+      "id": "BM5",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale link-only episode, then new payment-methods ask (answered)",
+      "reason": "客户询问了两个问题，但Captain只回答了一个。"
+    },
+    {
+      "id": "BM6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "control: no stale history, single self-contained exchange",
+      "reason": "提供了完整的密码重置步骤，且没有未解决的问题或进一步的请求。"
+    }
+  ]
+}

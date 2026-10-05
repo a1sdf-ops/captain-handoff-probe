@@ -1,0 +1,56 @@
+{
+  "model": "qwen-plus",
+  "temperature": 0.0,
+  "prompt": "..\\chatwoot\\enterprise\\lib\\captain\\prompts\\conversation_completion.liquid",
+  "agreement": "1/6",
+  "rows": [
+    {
+      "id": "BM1",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale escalated-shipping episode, then new COD ask (answered)",
+      "reason": "客户提出了第二个问题‘你们支持货到付款吗？’，Captain已回答不支持并列出可用支付方式，但该回答未被标记为已解决，且对话状态仍为pending，说明此轮交互尚未闭环；此外，Assistant插入的<conversation_boundary status=\"resolved\" />仅覆盖前一问题（发货延迟），不适用于新提出的货到付款问题。"
+    },
+    {
+      "id": "BM2",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale escalated-app-crash episode, then new refund-timing ask (answered)",
+      "reason": "Customer asked about refund timing after Assistant escalated the app crash issue. Captain answered the refund question, but the original app crash issue remains unresolved and was only escalated—not fixed. Since the conversation status is 'pending' and the core issue (app crashing on login) was not resolved, the conversation is incomplete."
+    },
+    {
+      "id": "BM3",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale dissatisfied episode, then new business-hours ask (answered)",
+      "reason": "Customer's initial issue about product scratches and compensation was not resolved; Captain only directed them to contact客服 without providing a solution or next steps. Customer explicitly stated 'this didn't solve my problem.' The follow-up question about customer service hours is secondary and doesn't indicate resolution of the original request."
+    },
+    {
+      "id": "BM4",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale half-answered multi-question episode, then new invoice ask (answered)",
+      "reason": "客户提出了三个问题：退货操作、修改收货地址、开具发票。Captain只回答了退货和发票，但未回应第二个问题——能否修改收货地址，该问题尚未解决。"
+    },
+    {
+      "id": "BM5",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale link-only episode, then new payment-methods ask (answered)",
+      "reason": "Customer asked a new question about supported payment methods that was answered, but the conversation status is 'pending' and the latest exchange ended with Captain's response — no confirmation of resolution or closing. Since status is pending and no explicit resolution marker follows this answer, we cannot assume completion."
+    },
+    {
+      "id": "BM6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "control: no stale history, single self-contained exchange",
+      "reason": "Captain provided a complete, self-contained answer to the customer's question about password reset, with clear step-by-step instructions. No follow-up or additional information was requested or left unanswered."
+    }
+  ]
+}

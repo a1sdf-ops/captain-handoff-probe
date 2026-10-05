@@ -1,0 +1,56 @@
+{
+  "model": "qwen-plus",
+  "temperature": 0.0,
+  "prompt": "..\\chatwoot\\enterprise\\lib\\captain\\prompts\\conversation_completion.liquid",
+  "agreement": "1/6",
+  "rows": [
+    {
+      "id": "BM1",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale escalated-shipping episode, then new COD ask (answered)",
+      "reason": "客户提出了两个问题：订单三天未发货，以及是否支持货到付款。Captain 回应了第二个问题（不支持货到付款），但对第一个问题仅表示‘已帮您升级给物流团队处理’，未提供任何进展、预计时间或进一步说明，属于承诺后续处理但未解决当前问题，且状态为 pending，因此对话不完整。"
+    },
+    {
+      "id": "BM2",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale escalated-app-crash episode, then new refund-timing ask (answered)",
+      "reason": "客户询问退款到账时间，Captain给出了3个工作日的答复，但未确认该退款是否已发起或与之前提到的App闪退问题是否关联。客户最初的App闪退问题尚未得到解决或确认已修复，且技术团队跟进状态未知，因此问题未完全闭环。"
+    },
+    {
+      "id": "BM3",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale dissatisfied episode, then new business-hours ask (answered)",
+      "reason": "Customer's initial issue (product with scratches, how to get compensation) remains unresolved. Captain only provided contact instructions and operating hours, but did not address the compensation request or guide the customer on how to proceed with a claim."
+    },
+    {
+      "id": "BM4",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale half-answered multi-question episode, then new invoice ask (answered)",
+      "reason": "Customer asked two questions: (1) how to return shoes purchased last week, and (2) whether the shipping address can be changed. Captain only answered the return process, not the address change. Also, customer then asked a third question — 'How to issue an invoice?' — which Captain answered, but the second original request (address change) remains unaddressed. So at least one unresolved request exists."
+    },
+    {
+      "id": "BM5",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "stale link-only episode, then new payment-methods ask (answered)",
+      "reason": "客户提出了两个独立问题：订单状态查询和支付方式。Captain只回答了第二个问题（支付方式），但第一个问题（如何查订单状态）未得到具体解答——仅提供了一个帮助中心链接，没有说明如何操作、是否需要登录、或是否有其他查询途径。客户可能仍需要进一步指导。"
+    },
+    {
+      "id": "BM6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "control: no stale history, single self-contained exchange",
+      "reason": "Customer asked how to reset forgotten password; Captain provided clear, self-contained instructions with all necessary steps (go to login page, click 'forgot password', enter registered email, follow reset link, set new password). No follow-up question or unresolved issue remains."
+    }
+  ]
+}
