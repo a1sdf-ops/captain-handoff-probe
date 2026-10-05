@@ -1,0 +1,72 @@
+{
+  "model": "qwen-plus",
+  "temperature": 0.0,
+  "prompt": "..\\chatwoot\\enterprise\\lib\\captain\\prompts\\conversation_completion.liquid",
+  "agreement": "8/8",
+  "rows": [
+    {
+      "id": "S1",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "multi-question, only half answered",
+      "reason": "Customer asked two questions: how to return shoes and whether the shipping address can be changed. Captain only answered the first question about returns; the second question about changing the shipping address remains unanswered."
+    },
+    {
+      "id": "S2",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "link only, no answer",
+      "reason": "Customer asked why their order hasn't shipped after 3 days; Captain only provided a generic help center link without addressing the specific order or explaining the delay."
+    },
+    {
+      "id": "S3",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "promise of future action / escalation",
+      "reason": "Assistant escalated to tech team but did not resolve the issue; customer is still waiting for a fix or update."
+    },
+    {
+      "id": "S4",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "customer says not helped",
+      "reason": "Customer explicitly states the issue was not resolved and expresses dissatisfaction. The Captain's response 'You can contact customer service' is unhelpful and does not address the request for compensation for a scratched product."
+    },
+    {
+      "id": "S5",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "complete, self-contained answer",
+      "reason": "客户询问是否支持货到付款，Captain明确回答不支持，并提供了可用的支付方式，问题已完整解答，无后续未回应的请求或疑问。"
+    },
+    {
+      "id": "S6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "answered, customer did not say thanks",
+      "reason": "Captain provided a complete, self-contained answer to the customer's question about password reset, with clear step-by-step instructions. No follow-up question or unresolved request remains."
+    },
+    {
+      "id": "S7",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "boundary: greeting only, AI asks what is needed",
+      "reason": "Customer sent only a greeting with no recognizable question or request. Captain responded with a standard offer of help, which satisfies the completion criteria for minimal interactions."
+    },
+    {
+      "id": "S8",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "handed off but still pending",
+      "reason": "Captain stated they transferred to human agent and customer is waiting for human agent response."
+    }
+  ]
+}

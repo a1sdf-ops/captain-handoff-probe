@@ -1,0 +1,72 @@
+{
+  "model": "qwen-max",
+  "temperature": 0.0,
+  "prompt": "..\\chatwoot\\enterprise\\lib\\captain\\prompts\\conversation_completion.liquid",
+  "agreement": "8/8",
+  "rows": [
+    {
+      "id": "S1",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "multi-question, only half answered",
+      "reason": "客户询问了两个问题，但只回答了关于退货的操作，没有提及如何更改收货地址。"
+    },
+    {
+      "id": "S2",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "link only, no answer",
+      "reason": "客户询问了订单延迟发货的原因，但是只收到了一个帮助中心链接作为回复，没有直接回答问题。"
+    },
+    {
+      "id": "S3",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "promise of future action / escalation",
+      "reason": "Assistant mentioned that the issue has been escalated to the technical team and they will follow up, indicating a pending action for the customer."
+    },
+    {
+      "id": "S4",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "customer says not helped",
+      "reason": "客户表示问题没有得到解决，并且质疑了当前的解决方案。"
+    },
+    {
+      "id": "S5",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "complete, self-contained answer",
+      "reason": "Captain fully addressed the customer's question about payment methods, and no further action is needed."
+    },
+    {
+      "id": "S6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "answered, customer did not say thanks",
+      "reason": "问题已得到完整回答，无需进一步行动。"
+    },
+    {
+      "id": "S7",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "boundary: greeting only, AI asks what is needed",
+      "reason": "客户仅发送了问候语，没有提出可识别的问题或请求，并且船长已经回应询问需要什么帮助。"
+    },
+    {
+      "id": "S8",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "handed off but still pending",
+      "reason": "Captain mentioned that the customer will be transferred to a human agent, indicating that the issue is not resolved and further action is needed."
+    }
+  ]
+}

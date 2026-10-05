@@ -1,0 +1,72 @@
+{
+  "model": "qwen-plus",
+  "temperature": 0.0,
+  "prompt": "variants\\v3_lenient.liquid",
+  "agreement": "8/8",
+  "rows": [
+    {
+      "id": "S1",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "multi-question, only half answered",
+      "reason": "Captain only addressed the first request (return process) but did not respond to the second request about changing the shipping address. The conversation is pending and the second question remains unanswered."
+    },
+    {
+      "id": "S2",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "link only, no answer",
+      "reason": "Captain provided a generic link to help center without addressing the specific issue of the 3-day delay in shipping for the customer's order."
+    },
+    {
+      "id": "S3",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "promise of future action / escalation",
+      "reason": "Assistant acknowledged the issue and escalated to tech team but did not provide a resolution, workaround, or timeline; customer's problem remains unresolved."
+    },
+    {
+      "id": "S4",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "customer says not helped",
+      "reason": "Customer reported a product with scratches and asked how to get compensation. Captain's response 'You can contact customer service' is unhelpful and circular since the customer is already contacting customer service. The customer explicitly rejected the response as not solving their problem. No actual resolution or next steps were provided."
+    },
+    {
+      "id": "S5",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "complete, self-contained answer",
+      "reason": "Captain directly answered the customer's question about cash on delivery support with a clear 'no' and provided alternative payment methods. The response is complete and self-contained."
+    },
+    {
+      "id": "S6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "answered, customer did not say thanks",
+      "reason": "Captain provided a complete, self-contained answer to the customer's question about resetting a forgotten password, including clear step-by-step instructions. No follow-up or additional action is required from the customer."
+    },
+    {
+      "id": "S7",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "boundary: greeting only, AI asks what is needed",
+      "reason": "Customer sent only a greeting with no recognizable question or request; Captain responded with a standard offer of help."
+    },
+    {
+      "id": "S8",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "handed off but still pending",
+      "reason": "客户明确投诉配送员，Captain仅表示已转接人工客服但未解决实际问题；状态为pending，且无后续处理或确认，问题尚未解决。"
+    }
+  ]
+}

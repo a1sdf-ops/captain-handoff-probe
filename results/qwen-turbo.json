@@ -1,0 +1,72 @@
+{
+  "model": "qwen-turbo",
+  "temperature": 0.0,
+  "prompt": "..\\chatwoot\\enterprise\\lib\\captain\\prompts\\conversation_completion.liquid",
+  "agreement": "6/8",
+  "rows": [
+    {
+      "id": "S1",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "multi-question, only half answered",
+      "reason": "The customer asked two questions, and only the first one was addressed. The second question about changing the delivery address was not answered."
+    },
+    {
+      "id": "S2",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "link only, no answer",
+      "reason": "Customer asked about their order not being shipped and the Captain provided a link to a help center without addressing the issue directly."
+    },
+    {
+      "id": "S3",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "promise of future action / escalation",
+      "reason": "The assistant mentioned escalating the issue to the technical team but did not provide a resolution or confirm that the customer's request was fully addressed."
+    },
+    {
+      "id": "S4",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "customer says not helped",
+      "reason": "Customer raised an issue about a product with scratches and asked for compensation, but the assistant only provided a generic response to contact customer service. The customer indicated dissatisfaction and that the issue was not resolved."
+    },
+    {
+      "id": "S5",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "complete, self-contained answer",
+      "reason": "The customer asked if cash on delivery is supported, and the Captain provided a clear answer that it is not supported, along with the available payment methods."
+    },
+    {
+      "id": "S6",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "answered, customer did not say thanks",
+      "reason": "The customer asked about resetting a password, and the Captain provided a solution. However, the customer has not confirmed if the solution worked or if they need further assistance."
+    },
+    {
+      "id": "S7",
+      "expect": "complete",
+      "got": "incomplete",
+      "ok": false,
+      "topic": "boundary: greeting only, AI asks what is needed",
+      "reason": "The customer sent a greeting, and the assistant responded with an offer for help, but no recognizable request was made."
+    },
+    {
+      "id": "S8",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "handed off but still pending",
+      "reason": "The customer raised a complaint, and the Captain mentioned transferring to a human agent, but no resolution was provided yet."
+    }
+  ]
+}

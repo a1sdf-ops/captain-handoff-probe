@@ -1,0 +1,72 @@
+{
+  "model": "qwen-plus",
+  "temperature": 0.0,
+  "prompt": "variants\\v2_bias_flipped.liquid",
+  "agreement": "8/8",
+  "rows": [
+    {
+      "id": "S1",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "multi-question, only half answered",
+      "reason": "Customer asked two questions: (1) how to return shoes, (2) whether shipping address can be changed. Captain only answered the first; the second question about changing the delivery address remains unanswered."
+    },
+    {
+      "id": "S2",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "link only, no answer",
+      "reason": "Customer asked why their order hasn't shipped after 3 days; Captain only provided a generic help center link without addressing the specific order or explaining the delay."
+    },
+    {
+      "id": "S3",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "promise of future action / escalation",
+      "reason": "客户报告App登录闪退问题，助理仅表示已升级给技术团队，但未提供临时解决方案、预计处理时间或后续跟进方式，客户仍在等待问题解决。"
+    },
+    {
+      "id": "S4",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "customer says not helped",
+      "reason": "Customer explicitly states the issue wasn't resolved and expresses dissatisfaction; the Captain's response was generic and didn't address the specific request about compensation for scratches."
+    },
+    {
+      "id": "S5",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "complete, self-contained answer",
+      "reason": "客户询问是否支持货到付款，Captain已明确回答不支持，并提供了可用的支付方式，问题已完整解答，无后续疑问或未满足请求。"
+    },
+    {
+      "id": "S6",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "answered, customer did not say thanks",
+      "reason": "Captain provided a complete, self-contained answer to the customer's question about resetting a forgotten password, including clear step-by-step instructions. No further action or information is required from the customer."
+    },
+    {
+      "id": "S7",
+      "expect": "complete",
+      "got": "complete",
+      "ok": true,
+      "topic": "boundary: greeting only, AI asks what is needed",
+      "reason": "Customer sent only a greeting with no recognizable question or request; Captain responded with a standard help offer."
+    },
+    {
+      "id": "S8",
+      "expect": "incomplete",
+      "got": "incomplete",
+      "ok": true,
+      "topic": "handed off but still pending",
+      "reason": "客户明确表达了投诉配送员的诉求，Captain仅表示已转接人工客服但未实际提供帮助或确认转接成功，客户仍在等待人工客服响应，问题尚未解决。"
+    }
+  ]
+}

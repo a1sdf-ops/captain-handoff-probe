@@ -1,0 +1,10 @@
+# secrets
+.env
+
+# ablation prompts are derived from Chatwoot's commercially licensed enterprise/ prompt.
+# They are generated at runtime by make_variants.py and must not be redistributed.
+variants/
+
+# python
+__pycache__/
+*.pyc
